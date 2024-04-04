@@ -11,6 +11,8 @@ void cayman::set_rotation() {
     angle = nearest_multiple * M_PI / 180;
 }
 
+
+
 void move_caymans(std::vector<cayman>& caymans, std::vector<capybara>& capybaras) {
     for (auto& pr : caymans) {
         if (pr.is_alive) {
