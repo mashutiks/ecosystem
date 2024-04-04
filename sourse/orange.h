@@ -1,18 +1,18 @@
 #pragma once
+#include "life.h"
 #include <string>
 #include "capybara.h"
-//#include "deleting.h"
 #include "defines.h"
 #include <chrono>
 #include <random>
 
-class orange {
+class orange : life {
 public:
 //private:
     float x, y;
     float move_x, move_y;
     long long additional_life;
-    int type;
+
     int path_count;
     int age;
     bool is_alive;
@@ -25,7 +25,8 @@ public:
 public:
 
     orange(int cur_x = -1, int cur_y = -1)
-        : x(-1), y(-1), type(1), path_count(0), age(0), is_alive(true), destination_right(false), angle_destination(0), angle(0) {
+        : x(-1), y(-1), path_count(0), age(0), is_alive(true), destination_right(false), angle_destination(0), angle(0),
+        life(move_x, move_y, angle, angle_destination, is_alive, path_count, destination_right) {
         if (cur_x == -1 && cur_y == -1) {
             std::random_device rd;
             std::mt19937 gen(rd());
