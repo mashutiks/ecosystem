@@ -1,4 +1,5 @@
 #pragma once
+#include "life.h"
 #include "cayman.h"
 #include "orange.h"
 #include "defines.h"
@@ -12,9 +13,9 @@ class cayman;
 
 class orange;
 
-class capybara {
+class capybara : public life {
 public:
-//private:
+    //private:
     orange* prey = nullptr;
     bool hunt;
     bool found_close_prey;
@@ -25,7 +26,6 @@ public:
     int age;
     float x, y;
     long long capybara_additional_life;
-    int type;
     float width;
     float height;
     float cayman_x;
@@ -49,7 +49,8 @@ public:
 
 public:
     capybara(int cur_x = -1, int cur_y = -1)
-        : hunt(false), found_close_prey(false), path_count(0), hungry_level(40), age(0), type(1), cayman_x(0), cayman_y(0), distance_cayman(1e9), move_x(0), move_y(0), angle(0), angle_destination(0), is_alive(true), destination_right(true), cayman_found(false), is_first(true), is_hunted(false), found_close_cayman(false) {
+        : hunt(false), found_close_prey(false), path_count(0), hungry_level(40), age(0), cayman_x(0), cayman_y(0), distance_cayman(1e9), move_x(0), move_y(0), angle(0), angle_destination(0), is_alive(true), destination_right(true), cayman_found(false), is_first(true), is_hunted(false), found_close_cayman(false),
+        life(move_x, move_y, angle, angle_destination, is_alive, path_count, destination_right) {
         if (cur_x == -1 && cur_y == -1) {
             life_start = std::chrono::steady_clock::now();
             std::random_device rd;
