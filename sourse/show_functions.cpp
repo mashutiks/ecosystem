@@ -1,6 +1,6 @@
 #include "capybara.h"
 #include "cayman.h"
-#include "path_generate.h"
+//#include "path_generate.h"
 #include "show_functions.h"
 #include <SFML/Graphics.hpp>
 
