@@ -1,4 +1,5 @@
 #pragma once
+#include "life.h"
 #include "defines.h"
 #include "actionc.h"
 #include "capybara.h"
@@ -9,7 +10,7 @@
 
 class capybara;
 
-class cayman {
+class cayman : public life {
 public:
 //private:
     std::chrono::time_point<std::chrono::steady_clock> life_start;
@@ -25,8 +26,8 @@ public:
     int speed;
     float move_x;
     float move_y;
-    float fish_x;
-    float fish_y;
+    float capybara_x;
+    float capybara_y;
     float angle;
     float angle_destination;
     bool is_alive;
@@ -35,7 +36,9 @@ public:
 
 public:
     cayman(int cur_x = -1, int cur_y = -1) 
-        : found_close_prey(false), hungry_level(31), x(0), y(0), direction(0), speed(CAYMAN_SPEED), move_x(0), move_y(0), fish_x(0), fish_y(0), angle(0), angle_destination(0), is_alive(true), destination_right(true) {
+        : found_close_prey(false), hungry_level(31), x(0), y(0), direction(0), speed(CAYMAN_SPEED), capybara_x(0), capybara_y(0),
+        life(move_x, move_y, angle, angle_destination, is_alive, path_count, destination_right) {
+
         if (cur_x == -1 && cur_y == -1) {
             life_start = std::chrono::steady_clock::now();
             std::random_device rd;
@@ -48,7 +51,7 @@ public:
             y = dis_y(gen);
         }
     }
-
+    ~cayman() {}
     void move(std::vector<capybara>& capybaras);
     bool find_capybara(std::vector<capybara>& capybaras);
     void set_rotation();
