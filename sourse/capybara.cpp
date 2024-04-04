@@ -262,3 +262,6 @@ bool capybara::find_orange(std::vector<orange>& oranges) {
 
     return is_prey_found;
 }
+
+    return is_prey_found;
+}
